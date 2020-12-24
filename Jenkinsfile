@@ -51,5 +51,13 @@ pipeline {
                 }
             }
         }
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test'){
+                    git branch: 'main', credentialsId: 'gitid', url: 'https://github.com/cristovaopbgyn/test-funcional.git'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
